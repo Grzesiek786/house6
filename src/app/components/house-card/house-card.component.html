@@ -1,0 +1,8 @@
+<div *ngIf="house">
+  <p>ID: {{ house.id }}</p>
+  <p>Miejscowość: {{ house.address[0].city }}</p>
+  <p>Adres: {{ house.address[0].street }} {{ house.address[0].num }}</p>
+  <p>Powierzchnia: {{ house.surface }} m2</p>
+  <p>Cena: {{ house.price }} zł</p>
+  <p>########################################</p>
+</div>
