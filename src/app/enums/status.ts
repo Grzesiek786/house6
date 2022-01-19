@@ -1,7 +1,8 @@
-export enum Status {
-  FOR_SALE,
-  SOLD,
-  FOR_RENT,
-  RESERVED,
-  RENTED
+export enum HouseStatus {
+  FOR_SALE = 'Na sprzedaż',
+  SOLD = 'Sprzedany',
+  FOR_RENT = 'Na wynajem',
+  RESERVED = 'Zarezerwowany',
+  RENTED = 'Wynajęty'
 }
+

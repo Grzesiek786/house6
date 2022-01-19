@@ -1,9 +1,12 @@
-import { Status } from "../enums/status";
-import { Address } from "./address.interface";
+import { HouseStatus } from '../enums/status';
+import {Address} from './address.interface';
 
-export interface IHouse {
-  id: number;
+export interface House {
+  id: string;
   price: number;
   surface: number;
-  address: Array<Address>;
+  status: HouseStatus;
+  address: Address;
+  photoSource: string;
+  photoSources: string[];
 }

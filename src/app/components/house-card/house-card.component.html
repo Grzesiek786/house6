@@ -1,8 +1,20 @@
-<div *ngIf="house">
-  <p>ID: {{ house.id }}</p>
-  <p>Miejscowość: {{ house.address[0].city }}</p>
-  <p>Adres: {{ house.address[0].street }} {{ house.address[0].num }}</p>
-  <p>Powierzchnia: {{ house.surface }} m2</p>
-  <p>Cena: {{ house.price }} zł</p>
-  <p>########################################</p>
+<div class="card-container" [ngClass]=" { 'green-border': isLatestReserved }">
+  <img [src]="house.photoSource" alt="house.address.city">
+  <div class="card">
+    <p>Miejscowość: {{ house.address.city }}</p>
+    <p>Adres: {{ house.address.street }} {{ house.address.number }}</p>
+    <p>Powierzchnia: {{ house.surface }} m2</p>
+    <p>Cena: {{ house.price | localeCurrency }} zł</p>
+    <p>Status: <span appColorsStatus [houseStatus]="house.status">{{ house.status | uppercase }}</span></p>
+    <ng-container [ngTemplateOutlet]="houseAvailability"></ng-container>
+    <div class="card-btn">
+      <button class="btn" (click)="reservedHouse()">Zarezerwuj</button>
+      <button class="btn" *ngIf="house.photoSources.length > 0" (click)="morePhotos()">{{ imagesAvailability === false ? 'Więcej zdjęć' : 'Ukryj zdjęcia'}}</button>
+    </div>
+    <ng-template #houseAvailability>
+      <div *ngIf="imagesAvailability" class="img-container">
+        <img (click)="showPhoto(photo)" *ngFor="let photo of house.photoSources" [src]="photo" alt="house.address.city">
+      </div>
+    </ng-template>
+  </div>
 </div>
